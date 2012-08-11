@@ -1,3 +1,5 @@
+## Gravatar - because I shouldn't have to upload a picture of myself in a Sombrero more than once...
+
 Simple
 
     Avatar("you@example.com").avatarUrl
@@ -11,4 +13,4 @@ Setting all the properties
     Gravatar(email).ssl(true).default(Monster).maxRatedAs(R).forceDefault(true).size(100).avatarUrl
 
 More info
-[at Gravatar](gravatar.com/site/implement/images/)
+[at Gravatar](http://gravatar.com/site/implement/images/)

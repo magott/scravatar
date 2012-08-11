@@ -3,7 +3,7 @@ import org.scalatest.FunSuite
 
 class ScravatarTest extends FunSuite{
 
-  val email = "morten.andersengott@gmail.com"
+  val email = "hilde.andersengott@gmail.com"
 
   test("avatarUrl"){
     val gravatar = Gravatar(email).ssl(true).default(Monster)
