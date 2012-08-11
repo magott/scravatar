@@ -1,6 +1,11 @@
 package no.magott.scravatar
 import java.net.{URLDecoder, URI, URLEncoder}
 import scala.Option
+
+/**
+ *
+ * Written by Hamnis, copied from https://github.com/javaBin/ems-redux
+ */
 case class URIBuilder private(scheme: Option[String], host: Option[String], port: Option[Int], path: List[Segment], params: Map[String, List[String]], pathEndsWithSlash: Boolean = false) {
   def withScheme(scheme: String) = copy(scheme = Some(scheme))
 

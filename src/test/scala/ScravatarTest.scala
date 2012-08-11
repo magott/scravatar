@@ -3,11 +3,12 @@ import org.scalatest.FunSuite
 
 class ScravatarTest extends FunSuite{
 
-  val email = "hilde.andersengott@gmail.com"
+  val email = "code@andersen-gott.com"
 
-  test("avatarUrl"){
+  test("Simple Avatar url"){
     val gravatar = Gravatar(email).ssl(true).default(Monster)
     assert(gravatar.defaultImage.isDefined)
+    gravatar.avatarUrl.foreach(print)
   }
 
   test("All props are combined"){

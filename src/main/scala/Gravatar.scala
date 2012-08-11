@@ -2,12 +2,16 @@ package no.magott.scravatar
 
 import java.net.URLEncoder
 
+/**
+ *
+ * @author Morten Andersen-Gott - code@andersen-gott.com
+ */
 case class Gravatar(email:String, ssl:Boolean, forceDefault:Boolean, defaultImage:Option[DefaultImage], rating:Option[Rating], size:Option[Int]) {
 
   if(size.exists(_ > 2048))
     throw new IllegalArgumentException("Size cannot exceed 2048")
 
-  val hash = Md5.md5(email)
+  val hash = Md5.hash(email)
 
   def ssl(ssl:Boolean):Gravatar = copy(ssl=ssl)
   def default(default:DefaultImage):Gravatar = copy(defaultImage = Some(default))
