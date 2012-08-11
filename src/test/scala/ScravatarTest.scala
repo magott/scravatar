@@ -1,5 +1,7 @@
 package no.magott.scravatar
 import org.scalatest.FunSuite
+import io.Source
+import java.net.URL
 
 class ScravatarTest extends FunSuite{
 
@@ -14,4 +16,5 @@ class ScravatarTest extends FunSuite{
   test("All props are combined"){
     Gravatar(email).ssl(true).default(Monster).maxRatedAs(R).forceDefault(true).size(100).avatarUrl
   }
+
 }

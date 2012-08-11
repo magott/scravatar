@@ -1,6 +1,6 @@
 package no.magott.scravatar
 
-import java.net.URLEncoder
+import java.net.{URL, URLEncoder}
 
 /**
  *
@@ -11,7 +11,7 @@ case class Gravatar(email:String, ssl:Boolean, forceDefault:Boolean, defaultImag
   if(size.exists(_ > 2048))
     throw new IllegalArgumentException("Size cannot exceed 2048")
 
-  val hash = Md5.hash(email)
+  val emailHash = Md5.hash(email)
 
   def ssl(ssl:Boolean):Gravatar = copy(ssl=ssl)
   def default(default:DefaultImage):Gravatar = copy(defaultImage = Some(default))
@@ -20,11 +20,16 @@ case class Gravatar(email:String, ssl:Boolean, forceDefault:Boolean, defaultImag
   def size(size:Int):Gravatar = copy(size = Some(size))
 
   def avatarUrl:String = {
-    initUriBuilder.segments("avatar",hash)
+    initUriBuilder.segments("avatar",emailHash)
       .queryParam("d",defaultImage.map(_.value))
       .queryParam("r", rating.map(_.value))
       .queryParam("s", size.map(_.toString))
     .build.toString
+  }
+
+  def downloadImage:Array[Byte] = {
+    val is = new URL(avatarUrl).openStream
+    Stream.continually(is.read).takeWhile(-1 !=).map(_.toByte).toArray
   }
 
   private def initUriBuilder:URIBuilder = {
