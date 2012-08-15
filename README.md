@@ -1,6 +1,6 @@
-### Gravatar - because I shouldn't have to upload a picture of myself in a sombrero more than once...
+## Gravatar - because I shouldn't have to upload a picture of myself in a sombrero more than once...
 
-#### API
+### API
 Simple
 
     Avatar("you@example.com").avatarUrl
@@ -17,7 +17,7 @@ More info
 [at Gravatar](http://gravatar.com/site/implement/images/)
 
 
-#### Adding the Scravatar dependency
+### Adding the Scravatar dependency
 
 Scravatar does not depend on any third party frameworks. It is built and deployed on maven central. To use it with sbt add
 
