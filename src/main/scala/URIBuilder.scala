@@ -1,4 +1,4 @@
-package no.magott.scravatar
+package scravatar
 import java.net.{URLDecoder, URI, URLEncoder}
 import scala.Option
 

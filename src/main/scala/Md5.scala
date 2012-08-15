@@ -1,4 +1,4 @@
-package no.magott.scravatar
+package scravatar
 
 import java.security.MessageDigest
 

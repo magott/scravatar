@@ -1,4 +1,4 @@
-package no.magott.scravatar
+package scravatar
 
 import java.net.{URL, URLEncoder}
 
@@ -8,8 +8,8 @@ import java.net.{URL, URLEncoder}
  */
 case class Gravatar(email:String, ssl:Boolean, forceDefault:Boolean, defaultImage:Option[DefaultImage], rating:Option[Rating], size:Option[Int]) {
 
-  if(size.exists(_ > 2048))
-    throw new IllegalArgumentException("Size cannot exceed 2048")
+  if(! size.forall(isValidSize))
+    throw new IllegalArgumentException("Size must be positive and cannot exceed 2048")
 
   val emailHash = Md5.hash(email)
 
@@ -42,6 +42,8 @@ case class Gravatar(email:String, ssl:Boolean, forceDefault:Boolean, defaultImag
       urlBuilder.queryParam("forcedefault","y")
     else urlBuilder
   }
+
+  private def isValidSize(size:Int) = size > 0 && size <= 2048
 
 }
 
