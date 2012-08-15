@@ -1,5 +1,6 @@
 ### Gravatar - because I shouldn't have to upload a picture of myself in a sombrero more than once...
 
+#### API
 Simple
 
     Avatar("you@example.com").avatarUrl
@@ -14,3 +15,23 @@ Setting all the properties
 
 More info
 [at Gravatar](http://gravatar.com/site/implement/images/)
+
+
+#### Adding the Scravatar dependency
+
+Scravatar does not depend on any third party frameworks. It is built and deployed on maven central. To use it with sbt add
+
+    libraryDependencies ++=
+	  Seq(
+	    "com.andersen-gott" %% "scravatar" % "1.0-SNAPSHOT"
+	  )
+
+to your build file
+
+With Maven
+
+    <dependency>
+	  <groupId>com.andersen-gott</groupId>
+	  <artifactId>scravatar_2.9.2</artifactId>
+	  <version>1.0-SNAPSHOT</version>
+	</dependency>
