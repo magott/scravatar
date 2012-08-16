@@ -3,7 +3,7 @@ package scravatar
 import java.net.{URL, URLEncoder}
 
 /**
- *
+ * Immutable (thread safe) class used to generate Gravatar URLs
  * @author Morten Andersen-Gott - code@andersen-gott.com
  */
 case class Gravatar(email:String, ssl:Boolean, forceDefault:Boolean, defaultImage:Option[DefaultImage], rating:Option[Rating], size:Option[Int]) {
@@ -19,6 +19,10 @@ case class Gravatar(email:String, ssl:Boolean, forceDefault:Boolean, defaultImag
   def maxRatedAs(rating:Rating):Gravatar = copy(rating = Some(rating))
   def size(size:Int):Gravatar = copy(size = Some(size))
 
+  /**
+   * Builds the Gravatar url
+   * @return gravatar url as String
+   */
   def avatarUrl:String = {
     initUriBuilder.segments("avatar",emailHash)
       .queryParam("d",defaultImage.map(_.value))
