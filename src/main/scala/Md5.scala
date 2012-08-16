@@ -2,7 +2,7 @@ package scravatar
 
 import java.security.MessageDigest
 
-object Md5 {
+private object Md5 {
 
   def hash(s: String) :String= {
     val md5 = MessageDigest.getInstance("MD5").digest(s.getBytes)
