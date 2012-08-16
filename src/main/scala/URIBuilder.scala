@@ -90,10 +90,10 @@ private object URIBuilder {
   def empty = new URIBuilder(None, None, None, Nil, Map())
 }
 
-case class Segment(seg: String) {
+private case class Segment(seg: String) {
   def encoded = URLEncoder.encode(seg, "UTF-8")
 }
 
-object Segment {
+private object Segment {
   def decoded(seg: String) = Segment(URLDecoder.decode(seg, "UTF-8"))
 }
