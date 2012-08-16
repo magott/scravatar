@@ -6,7 +6,7 @@ crossScalaVersions := Seq("2.9.1", "2.9.2")
 
 organization := "com.andersen-gott"
 
-version := "1.0"
+version := "1.1-SNAPSHOT"
 
 libraryDependencies ++=
   Seq(
