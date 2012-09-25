@@ -6,11 +6,12 @@ import java.net.{URL, URLEncoder}
  * Immutable (thread safe) class used to generate Gravatar URLs
  * @author Morten Andersen-Gott - code@andersen-gott.com
  */
-case class Gravatar(email:String, ssl:Boolean, forceDefault:Boolean, defaultImage:Option[DefaultImage], rating:Option[Rating], size:Option[Int]) {
+case class Gravatar(private val emailAddress:String, ssl:Boolean, forceDefault:Boolean, defaultImage:Option[DefaultImage], rating:Option[Rating], size:Option[Int]) {
 
   if(! size.forall(isValidSize))
     throw new IllegalArgumentException("Size must be positive and cannot exceed 2048")
 
+  val email = emailAddress.trim.toLowerCase
   val emailHash = Md5.hash(email)
 
   def ssl(ssl:Boolean):Gravatar = copy(ssl=ssl)
