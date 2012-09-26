@@ -23,7 +23,7 @@ Scravatar does not depend on any third party frameworks. It is built and deploye
 
     libraryDependencies ++=
 	  Seq(
-	    "com.andersen-gott" %% "scravatar" % "1.0"
+	    "com.andersen-gott" %% "scravatar" % "1.0.1"
 	  )
 
 to your build file
@@ -33,5 +33,5 @@ With Maven
     <dependency>
 	  <groupId>com.andersen-gott</groupId>
 	  <artifactId>scravatar_2.9.2</artifactId>
-	  <version>1.0</version>
+	  <version>1.0.1</version>
 	</dependency>
