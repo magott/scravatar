@@ -3,11 +3,11 @@
 ### API
 Simple
 
-    Avatar("you@example.com").avatarUrl
+    Gravatar("you@example.com").avatarUrl
 
 To get a secure URL (for embedding on websites served over HTTPS/SSL)
 
-    Avatar("you@example.com").ssl(true).avatarUrl
+    Gravatar("you@example.com").ssl(true).avatarUrl
 
 Setting all the properties
 
