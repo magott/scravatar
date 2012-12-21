@@ -1,6 +1,6 @@
 package scravatar
 
-import java.net.{URL, URLEncoder}
+import java.net.{URI, URL, URLEncoder}
 
 /**
  * Immutable (thread safe) class used to generate Gravatar URLs
@@ -56,17 +56,38 @@ object Gravatar{
   def apply(email:String):Gravatar = Gravatar(email, false, false, None, None, None)
 }
 
-case class DefaultImage(value:String)
+sealed abstract class DefaultImage(val value:String)
 case object Monster extends DefaultImage("monsterid")
 case object MysteryMan extends DefaultImage("mm")
 case object IdentIcon extends DefaultImage("identicon")
 case object Wavatar extends DefaultImage("wavatar")
 case object Retro extends DefaultImage("retro")
 case object FourOFour extends DefaultImage("404")
-case class CustomImage(url:String) extends DefaultImage(URLEncoder.encode(url, "UTF-8"))
+case class CustomImage(url:String) extends DefaultImage(URLEncoder.encode(URI.create(url).toString, "UTF-8"))
+object DefaultImage{
+  def apply(value:String):DefaultImage = value match {
+    case Monster.value => Monster
+    case MysteryMan.value => MysteryMan
+    case IdentIcon.value => IdentIcon
+    case Wavatar.value => Wavatar
+    case Retro.value => Retro
+    case FourOFour.value => FourOFour
+    case x => CustomImage(x)
+  }
+  def unapply(di:DefaultImage) = Some(di.value)
+}
 
-case class Rating(value:String)
+sealed abstract class Rating(val value:String)
 case object G extends Rating("g")
 case object PG extends Rating("pg")
 case object R extends Rating("r")
 case object X extends Rating("x")
+object Rating{
+  def apply(value:String):Rating = value match{
+    case G.value => G
+    case PG.value => PG
+    case R.value => R
+    case X.value => X
+    case x => throw new IllegalArgumentException(x + " is not a valid rating")
+  }
+}

@@ -23,12 +23,12 @@ class ScravatarTest extends FunSuite {
   }
 
   test("Fails if size > 2048") {
-    val exp = intercept[IllegalArgumentException] {
+    intercept[IllegalArgumentException] {
       Gravatar(email).size(2049)
     }
   }
   test("Fails if size < 0 ") {
-    val exp = intercept[IllegalArgumentException] {
+    intercept[IllegalArgumentException] {
       Gravatar(email).size(-1)
     }
   }
@@ -39,6 +39,17 @@ class ScravatarTest extends FunSuite {
     val space = Gravatar(" %s ".format(email))
     assert(target.emailHash == upper.emailHash)
     assert(target.emailHash == space.emailHash)
+  }
+
+  test("URL is encoded"){
+    val target = Gravatar(email).default(DefaultImage("http://example.com/image.jpg"))
+    assert (target.defaultImage.get.value == "http%3A%2F%2Fexample.com%2Fimage.jpg")
+  }
+
+  test("URL is validated") {
+    intercept[IllegalArgumentException]{
+      DefaultImage("http://example.com}")
+    }
   }
 
 

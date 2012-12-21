@@ -1,17 +1,18 @@
 name := "scravatar"
 
-scalaVersion := "2.9.2"
+scalaVersion:="2.10.0"
 
-crossScalaVersions := Seq("2.9.1", "2.9.2")
+crossScalaVersions := Seq("2.9.1", "2.9.2", "2.10.0")
 
 organization := "com.andersen-gott"
 
-version := "1.1-SNAPSHOT"
+version := "1.0.2"
 
-libraryDependencies ++=
+libraryDependencies <++= (scalaVersion) { s =>
   Seq(
-    "org.scalatest" %% "scalatest" % "1.7.1" % "test"
+    "org.scalatest" % ("scalatest_" + s) % "1.8" % "test"
   )
+}
 
 credentials += Credentials(Path.userHome / ".sbt" / "magott-credentials")
 
