@@ -6,7 +6,7 @@ crossScalaVersions := Seq("2.9.1", "2.9.2", "2.10.0", "2.11.1")
 
 organization := "com.andersen-gott"
 
-version := "1.1.0"
+version := "1.0.3"
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.0" % "test"
 
