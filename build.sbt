@@ -1,22 +1,14 @@
 name := "scravatar"
 
-scalaVersion:="2.10.0"
+scalaVersion:="2.11.1"
 
-crossScalaVersions := Seq("2.9.1", "2.9.2", "2.10.0")
+crossScalaVersions := Seq("2.9.1", "2.9.2", "2.10.0", "2.11.1")
 
 organization := "com.andersen-gott"
 
-version := "1.0.2"
+version := "1.1.0"
 
-libraryDependencies <++= (scalaVersion) { s =>
-  Seq(
-    "org.scalatest" % ("scalatest_" + s) % "1.8" % "test"
-  )
-}
-
-credentials += Credentials(Path.userHome / ".sbt" / "magott-credentials")
-
-useGpg:=true
+libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.0" % "test"
 
 publishTo <<= (version) { version: String =>
     if (version.trim.endsWith("SNAPSHOT"))
@@ -24,8 +16,6 @@ publishTo <<= (version) { version: String =>
     else
       Some("Sonatype Nexus Staging" at "https://oss.sonatype.org/service/local/staging/deploy/maven2")
 }
-
-seq(aetherPublishSettings: _*)
 
 homepage := Some(new URL("http://github.com/magott/scravatar"))
 
