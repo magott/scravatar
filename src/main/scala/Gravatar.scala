@@ -39,6 +39,7 @@ case class Gravatar(
   }
 
   def downloadImage: Array[Byte] = {
+    import scala.language.postfixOps
     val is = new URL(avatarUrl).openStream
     Stream.continually(is.read).takeWhile(-1 !=).map(_.toByte).toArray
   }
