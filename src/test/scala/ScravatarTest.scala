@@ -27,6 +27,7 @@ class ScravatarTest extends FunSuite {
       Gravatar(email).size(2049)
     }
   }
+
   test("Fails if size < 0 ") {
     intercept[IllegalArgumentException] {
       Gravatar(email).size(-1)
@@ -51,6 +52,4 @@ class ScravatarTest extends FunSuite {
       DefaultImage("http://example.com}")
     }
   }
-
-
 }

@@ -1,12 +1,11 @@
+crossScalaVersions := Seq("2.10.6", "2.11.12", "2.12.10", "2.13.1")
+
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.0"
+
 name := "scravatar"
-
-scalaVersion:="2.12.0"
-
-crossScalaVersions := Seq("2.10.0", "2.11.0", "2.12.0")
 
 organization := "com.andersen-gott"
 
-version := "1.0.3"
+scalaVersion:="2.13.1"
 
-libraryDependencies += "org.scalatest" % "scalatest_2.12" % "3.0.1"
-
+version := "1.0.4"
