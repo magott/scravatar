@@ -8,4 +8,4 @@ organization := "com.andersen-gott"
 
 scalaVersion:="2.13.1"
 
-version := "1.0.4"
+version in ThisBuild := "1.0.4"

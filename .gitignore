@@ -2,3 +2,4 @@
 .idea_modules
 target
 .DS_Store
+.jvmopts
