@@ -36,7 +36,7 @@ packageOptions += {
 }
 
 credentials ++= Seq(
-  Credentials(Path.userHome / ".sbt" / ".credentials"),
+  Credentials(Path.userHome / ".sbt" / ".sonatype-credentials"),
 )
 
 homepage := Some(url("https://github.com/magott/scravatar"))
